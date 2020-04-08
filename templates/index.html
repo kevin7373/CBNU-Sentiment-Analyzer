@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8"/>
+        <title>CSA Home</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+
+        <!-- GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="{{url_for('static', filename='vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="{{url_for('static', filename='css/animate.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- THEME STYLES -->
+        <link href="{{url_for('static', filename='css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <!-- END HEAD -->
+
+    <!-- BODY -->
+    <body>
+
+        <!--========== HEADER ==========-->
+        <header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a class="logo-wrap" href="index">
+                                <img class="logo-img logo-img-main" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                                <img class="logo-img logo-img-active" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                            </a>
+                        </div>
+                        <!-- End Logo -->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="navbar-nav navbar-nav-right">
+
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="index">Home</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="analysis">Analysis</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="board">Board</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navbar Collapse -->
+                </div>
+            </nav>
+            <!-- Navbar -->
+        </header>
+
+        <!--========== END HEADER ==========-->
+            <!--Slider-->
+
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="container">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+            </div>
+
+            <!-- Wrapper for slides -->
+
+          <div class="carousel-inner" role="listbox" style="height:600px">
+                <div class="item active">
+                    <img class="img-responsive" src="{{url_for('static', filename='img/1.jpg')}}" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                     <h1 class="carousel-title">상품 평가</h1>
+                                <p>#딥러닝을 이용한 한국어 감성분석기 </p>
+                            </div>
+                      </div>
+                     </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="{{url_for('static', filename='img/2.jpg')}}" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                 <h1 class="carousel-title">상품 평가</h1>
+                                <p>#딥러닝을 이용한 한국어 감성분석기 </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="{{url_for('static', filename='img/3.jpg')}}" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                 <h1 class="carousel-title">상품 평가</h1>
+                               <p>#딥러닝을 이용한 한국어 감성분석기 </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+            <!--Slider-->
+
+
+        <!--========== PAGE LAYOUT ==========-->
+
+        <!-- Latest Products -->
+        <div class="content-lg container">
+            <div class="row margin-b-40">
+                <div class="col-sm-6">
+                    <h2><a href="analysis">감성 분석(Sentiment Analysis)</a></h2>
+                </div>
+            </div>
+            <div class="row margin-b-40">
+                    <h3>소비자의 감성과 관련된 텍스트 정보를 자동으로 추출하는 텍스트 마이닝(Text Mining) 기술의 한 영역. 문서를 작성한 사람의 감정을 추출해 내는 기술로 문서의 주제보다 어떠한 감정을 가지고 있는가를 판단하여 분석한다. 주로 온라인 쇼핑몰에서 사용자의 상품평에 대한 분석이 대표적 사례로 하나의 상품에 대해 사용자의 좋고 나쁨에 대한 감정을 표현한 결과이다.</h3>
+            </div>
+			</div>
+            <!--// end row -->
+		
+		<div class="color-white">
+            <div class="content-lg container">
+				<div class="row margin-b-40">
+                <div class="col-sm-6">
+                    <h2><a href="analysis">Best & Worst Product</a></h2>
+                </div>
+        </div>
+			
+                <div class="row row-space-1">
+                    <div class="col-sm-4 sm-margin-b-2">
+                        <!-- Pricing -->
+                        
+                            <div class="margin-b-30">
+                                <div class="margin-b-20">
+									<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+										<a href="{{url_for('board_2', recent_page=1, num=pos_num['num'], search_contents='%20')}}"> <img class="img-responsive" src="{{url_for('static', filename='img/thumbs-up.png')}}" width="50%" alt="Latest Products Image"></a>
+									</div>
+								</div>
+                                <h3>Best Positive Product</h3>
+                                <a>{{pos}}개의 분석결과</a>
+                            </div>
+                            
+                            <a href="{{url_for('board_2', recent_page=1, num=pos_num['num'], search_contents='%20')}}" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Show Now</a>
+                        
+                        <!-- End Pricing -->
+                    </div>
+                    <div class="col-sm-4 sm-margin-b-2">
+                        <!-- Pricing -->
+                        
+                            <div class="margin-b-30">
+                                <div class="margin-b-20">
+									<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+										<a href="{{url_for('board_2', recent_page=1, num=neg_num['num'], search_contents='%20')}}"> <img class="img-responsive" src="{{url_for('static', filename='img/thumb-down.png')}}" width="50%" alt="Latest Products Image"></a>
+									</div>
+								</div>
+                                <h3>Worst Negative Product</h3>
+                                <a>{{neg}}개의 분석결과</a>
+                            </div>
+                            
+                            <a href="{{url_for('board_2', recent_page=1, num=neg_num['num'], search_contents='%20')}}" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Show Now</a>
+                        
+                        <!-- End Pricing -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- Pricing -->
+                        
+                            <div class="margin-b-30">
+                                <div class="margin-b-20">
+									<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+										<a href="{{url_for('board')}}"> <img class="img-responsive" src="{{url_for('static', filename='img/chart.png')}}" width="50%" alt="Latest Products Image"></a>
+									</div>
+								</div>
+                                <h3>Result Sentiment Analysis</h3>
+                                <a>{{pos+neg}}개의 분석결과</a>
+                            </div>
+                            
+                            <a href="{{url_for('board')}}" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Show Now</a>
+                        
+                        <!-- End Pricing -->
+                    </div>
+                </div>
+                <!--// end row -->
+            </div>
+        </div>
+		
+		<!-- best&worst-->
+		<div class="content-lg container">
+            <div class="row margin-b-40">
+                <div class="col-sm-6">
+                    <h2><a href="analysis">인기 분석 결과</a></h2>
+                </div>
+            </div>
+                <!-- Latest Products -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="margin-b-20">
+                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                            <a href="{{url_for('board_2', recent_page=1, num=data[0]['num'], search_contents='%20')}}"> <img class="img-responsive" src="{{url_for('static', filename='image/' + data[0]['num']|string + '.jpg')}}" alt="Latest Products Image"></a>
+                        </div>
+                    </div>
+                    <h4><a href="{{url_for('board_2', recent_page=1, num=data[0]['num'], search_contents='%20')}}">{{data[0]['title']}}</a> <span class="text-uppercase margin-l-20">Management</span></h4>
+                    <a>{{data[0]['contents']}}</br></a>
+                    <a class="link" href="{{url_for('board_2', recent_page=1, num=data[0]['num'], search_contents='%20')}}">Read More</a>
+                </div>
+                <!-- End Latest Products -->
+
+                <!-- Latest Products -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="margin-b-20">
+                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                            <a href="{{url_for('board_2', recent_page=1, num=data[1]['num'], search_contents='%20')}}"> <img class="img-responsive" src="{{url_for('static', filename='image/' + data[1]['num']|string + '.jpg')}}" alt="Latest Products Image"></a>
+                        </div>
+                    </div>
+                    <h4><a href="{{url_for('board_2', recent_page=1, num=data[1]['num'], search_contents='%20')}}">{{data[1]['title']}}</a> <span class="text-uppercase margin-l-20">Developmeny</span></h4>
+                    <a>{{data[1]['contents']}}</br></a>
+                    <a class="link" href="{{url_for('board_2', recent_page=1, num=data[1]['num'], search_contents='%20')}}">Read More</a>
+                </div>
+                <!-- End Latest Products -->
+
+                <!-- Latest Products -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="margin-b-20">
+                        <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                            <a href="{{url_for('board_2', recent_page=1, num=data[2]['num'], search_contents='%20')}}"> <img class="img-responsive" src="{{url_for('static', filename='image/' + data[2]['num']|string + '.jpg')}}" alt="Latest Products Image"></a>
+                        </div>
+                    </div>
+                    <h4><a href="{{url_for('board_2', recent_page=1, num=data[2]['num'], search_contents='%20')}}">{{data[2]['title']}}</a> <span class="text-uppercase margin-l-20">Design</span></h4>
+                    <a>{{data[2]['contents']}}</br> </a>
+                    <a class="link" href="{{url_for('board_2', recent_page=1, num=data[2]['num'], search_contents='%20')}}">Read More</a>
+                </div>
+                <!-- End Latest Products -->
+            
+            <!--// end row -->
+        </div>
+        <!-- End Latest Products -->
+
+		<!-- Pricing -->
+		<!--
+		<div class="content-lg container">
+		-->
+        
+        <!-- End Pricing -->
+		
+		
+    <!-- Testimonials -->
+        <div class="content-lg container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h2>고객 뉴스</h2>
+
+                    <!-- Swiper Testimonials -->
+                    <div class="swiper-slider swiper-testimonials">
+                        <!-- Swiper Wrapper -->
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <blockquote class="blockquote">
+                                    <div class="margin-b-20">
+                                       또 전체 응답자의 86.9%가 '소비자 리뷰'가 필요하다는데 동의했다. 이는 2014년 같은 조사(86.2%)에 비해서도 소폭 증가했다. 특히 남성(83%)보다는 여성(90.8%), 그리고 20대 소비자(20대 91.3%, 30대 85.5%, 40대 84%)가 소비자 리뷰의 필요성에 더욱 많이 공감하는 모습이었다. 소비자 리뷰에 대한 기본적인 신뢰도도 상당히 높았다. 소비자 10명 중 7명(69.3%)이 구매후기나, 상품평 등 실제 소비경험이 있는 구매자가 작성한 리뷰를 신뢰한다고 응답한 것이다.
+                                    </div>
+                                    <div class="margin-b-20">
+                                       소비자 리뷰에 대한 신뢰도는 69.3%였으며, 소비자 리뷰의 필요성에 보다 많이 공감하는 여성(74%) 및 20대(72%)의 신뢰도가 역시 더 높은 특징을 보였다.
+                                    </div>
+                                    <p><span class="fweight-700 color-link">Joh jmkim</span>, '한국언론 뉴스허브' 뉴시스통신사.</p>
+                                </blockquote>
+                            </div>
+                            <div class="swiper-slide">
+                                <blockquote class="blockquote">
+                                    <div class="margin-b-20">
+                                        소비자 리뷰의 중요성을 아는 기업들은 비용을 지불하면서까지 자사 제품에 대한 리뷰의 양을 늘리기 위해 애쓴다. 의도적으로 페이지뷰를 늘리고, 검색어 상위에 오르도록 작업한다. 하지만 다수의 리뷰에 근거한 통계적 설명은 하나의 실제 사례보다 효과가 덜하다. 수많은 리뷰의 평균점수보다 “그 식당에서 먹은 반찬들의 재료는 냉동이었다”는 실제 사례가 소비자들에게 더 큰 반향을 일으킨다는 얘기다.
+                                    </div>
+                                    <div class="margin-b-20">
+                                        최근엔 소비자들이 믿을만한 소비자 리뷰를 찾아내기 위해 나름대로 다양한 전략을 개발하고 있다. 필자가 가르치는 학생들만 봐도 그렇다. 그들은 검색어 입력 후에 앞의 두세 페이지를 건너뛰고 네번째나 다섯번째 페이지에 나오는 리뷰를 읽기 시작하거나 주요 검색어와 ‘솔직’ ‘실망’ ‘내 돈 주고’ 등의 단어를 조합해 ‘작업’하지 않은 리뷰를 찾아내기도 한다. 사진이 선명하거나 비슷한 사진이 계속 등장하면 업체에서 제공한 사진이라고 불신하기도 한다.
+
+                                    </div>
+                                    <p><span class="fweight-700 color-link">Alex 김경자</span>, 소비자 리뷰에 귀가 세워지는 이유</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <!-- End Swiper Wrapper -->
+
+                        <!-- Pagination -->
+                        <div class="swiper-testimonials-pagination"></div>
+                    </div>
+                    <!-- End Swiper Testimonials -->
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Testimonials -->
+		<!--
+        </div>
+		-->
+        <!--========== END PAGE LAYOUT ==========-->
+
+        <!--========== FOOTER ==========-->
+        <footer class="footer">
+            <!-- Links -->
+            
+                    
+                            <!-- List -->
+					<p id="FooterOne">2018 All Rights Reserved.  서비스약관  |  개인정보 보호  |  도움말  <br>
+					제작자: 박정주 윤준영<br>
+				    주소: 충청북도 청주시 서원구 개신동 전자정보대학3관<br>
+					E-mail junyoung292@hanmail.net kevin7373@naver</p>
+					<a id="FooterTwo" href="www.heycuvic.cbnu.ac.kr" title="큐빅 홈페이지"><img src="{{url_for('static', filename='img/cuvic.png')}}" width="50px" height="50px" style="margin-top: 2%"></a>
+					<a id="FooterThree" href="http://www.chungbuk.ac.kr/site/www/main.do" title="충북대학교 홈페이지"><img src="{{url_for('static', filename='img/cbnu.png')}}" width="50px" height="50px" style="margin-top: 2%"></a>
+					<a id="FooterFour" href="http://www.Lake.ac.kr/site/www/main.do" title="충북대학교 홈페이지"><img src="{{url_for('static', filename='img/Lake.png')}}" width="50px" height="50px" style="margin-top: 2%"></a>
+                            <!-- End List -->
+                    
+                    <!--// end row -->
+            
+            <!-- End Links -->
+
+
+        </footer>
+        <!--========== END FOOTER ==========-->
+
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="{{url_for('static', filename='vendor/jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{{url_for('static', filename='vendor/jquery.easing.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{{url_for('static', filename='js/layout.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/swiper.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/masonry.min.js')}}" type="text/javascript"></script>
+
+    </body>
+    <!-- END BODY -->
+</html>

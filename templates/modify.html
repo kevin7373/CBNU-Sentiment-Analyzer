@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CSA Board</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="{{url_for('static', filename='vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="{{url_for('static', filename='css/animate.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- THEME STYLES -->
+        <link href="{{url_for('static', filename='css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+	<body>
+        <header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container">
+
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a class="logo-wrap" href="{{url_for('index')}}">
+                                <img class="logo-img logo-img-main" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                                <img class="logo-img logo-img-active" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                            </a>
+                        </div>
+                        <!-- End Logo -->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="navbar-nav navbar-nav-right">
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('index')}}">Home</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('analysis')}}">Analysis</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="{{url_for('board')}}">Board</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navbar Collapse -->
+                </div>
+            </nav>
+            <!-- Navbar -->
+        </header>
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+                    <!-- Header -->
+                    <br><br>
+                    <header id="header">
+                        <a href="{{url_for('index')}}" class="logo"><strong>CSA's</strong> Sentiment Analysis</a>
+                        <ul class="icons">
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+                        </ul>
+                    </header>
+                    <!-- Content -->
+                    <section>
+                        <form method="POST" action="{{url_for('board_2', num=num, recent_page=recent_page, search_contents = search_contents)}}">
+                        	<div class="row uniform">
+                        		<div class="6u 12u$(xsmall)">
+                        			<input type="text" name="name" id="demo-name" disabled="disabled" placeholder="{{data.name}}">
+                        		</div>
+                        		<div class="6u$ 12u$(xsmall)">
+                        			<input type="password" name="password" id="demo-email" value="" placeholder="password" />
+                        		</div>
+                        		<!-- Break -->
+                        		<div class="6u 12u$(xsmall)">
+                                    <div class="select-wrapper">
+                                        <select name="demo-category" id="demo-category">
+                                            <option value="">- Category -</option>
+                                            <option value="1">가전제품</option>
+                                            <option value="2">의류</option>
+                                            <option value="3">육아</option>
+											<option value="4">뷰티</option>
+											<option value="5">스포츠</option>
+											<option value="6">식품</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="6u$ 12u$(xsmall)">
+                                    <input type="text" name="title" id="demo-email" value="" placeholder="{{data.title}}" />
+                                </div>
+								<!-- Break -->
+								<div class="12u$">
+									<textarea name="contents" id="demo-message" rows="6">{{data.contents}}</textarea>
+								</div>
+								<!-- Break -->
+								<div class="12u$">
+									<ul class="actions">
+                                        <form method="POST">
+										  <li><input type="submit" class="button" value="수정"></li>
+										  <li><a class="button" href="{{url_for('board_2', num=num|int, recent_page=recent_page, search_contents = search_contents)}}"/>취소</a></li>
+                                        </form>
+									</ul>
+								</div>
+							</div>
+						</form>
+                    </section>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="in">
+                    <!-- Search -->
+                    <section id="search" class="alt">
+                        <form method="post" action="#">
+                            <input type="text" name="query" id="query" placeholder="Search" />
+                        </form>
+                    </section>
+                    <!-- Menu -->
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="{{url_for('index')}}">Home</a></li>
+                            <li>
+                                <span class="opener">Analysis</span>
+                                <ul>
+                                    <li><a href="{{url_for('analysis2')}}">가전 제품</a></li>
+                                    <li><a href="{{url_for('analysis2')}}">의류</a></li>
+                                    <li><a href="{{url_for('analysis2')}}">육아</a></li>
+									<li><a href="{{url_for('analysis2')}}">뷰티</a></li>
+									<li><a href="{{url_for('analysis2')}}">스포츠</a></li>
+									<li><a href="{{url_for('analysis2')}}">식품</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{url_for('board')}}">Board</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="{{url_for('static', filename = 'assets/js/jquery.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/skel.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/util.js')}}"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="{{url_for('static', filename = 'assets/js/main.js')}}"></script>
+    </body>
+</html>

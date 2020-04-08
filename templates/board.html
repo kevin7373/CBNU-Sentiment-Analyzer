@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>CSA Board</title>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> -->
+        <!-- <link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" /> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+
+        <!-- GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="{{url_for('static', filename='vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="{{url_for('static', filename='css/animate.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- THEME STYLES -->
+        <link href="{{url_for('static', filename='css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container">
+                       <div>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+                        <div>
+                    <!-- Logo -->
+                        <div class="logo">
+
+                            <a class="logo-wrap" href="{{url_for('index')}}">
+                                <img class="logo-img logo-img-main" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                                <img class="logo-img logo-img-active" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                            </a>
+                        </div>
+                        <!-- End Logo -->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="navbar-nav navbar-nav-right">
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('index')}}">Home</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('analysis')}}">Analysis</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="{{url_for('board')}}">Board</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    <!-- End Navbar Collapse -->
+                </div>
+            </nav>
+            <!-- Navbar -->
+        </header>
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+                    <!-- Header -->
+                    <br><br>
+                    <header id="header">
+                        <a href="{{url_for('index')}}" class="logo"><strong>CSA's</strong> Sentiment Analysis</a>
+                        <ul class="icons">
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+                        </ul>
+                    </header>
+                    <!-- Content -->
+                    <section>
+                        <!-- Table -->
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th><a href="{{url_for('sort', recent_page=recent_page, search_contents = search_contents)}}">번호</a></th>
+                                        <th>제목</th>
+                                        <th>작성자</th>
+                                        <th>작성일</th>
+                                        <th>조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for j in data %}
+                                    <tr>
+                                        <td>{{j.num}}</td>
+                                        <td><a href="{{url_for('board_2', num=j.num|int, recent_page=recent_page, search_contents = search_contents)}}">{{j.title}}</a></td>
+                                       
+                                        <td>{{j.name}}</td>
+										{% if today_date != j.date %}
+                                        <td>
+											{{j.date}}
+										</td>
+										{% else %}
+										<td>
+											{{j.time}}
+										</td>
+										{% endif %}
+										<td>{{j.count}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <center>
+                            <ul class="pagination">
+                                <li><a href="{{url_for('board', recent_page=start_page - 5, search_contents=search_contents)}}" {% if recent_block == 1 %} class="button disabled" {% else %} class="button" {% endif %} >Prev</a></li>
+                                {% for page in range(start_page, end_page + 1) %}
+                                <li><a href="{{url_for('board', recent_page=page, search_contents=search_contents)}}" {% if recent_page == page %} class ="page active" {% else %} class="page" {% endif %}>{{page}}</a></li>
+                                {% endfor %}
+                                <li><a href="{{url_for('board', recent_page=start_page + 5, search_contents=search_contents)}}" {% if recent_block == total_block %} class="button disabled" {% else %} class="button" {% endif %}>Next</a></li>
+                            </ul>
+                        </center>
+                    </section>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="in">
+                    <!-- Search -->
+                    <section id="search" class="alt">
+                        <form method="POST" action="{{url_for('board')}}">
+                            <input type="text" placeholder="Search" name="search_contents" />
+                            <!-- <input type="submit"> -->
+                        </form>
+                    </section>
+                    <!-- Menu -->
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="{{url_for('index')}}">Home</a></li>
+                            <li>
+                                <span class="opener">Analysis</span>
+                                <ul>
+                                    <li><a href="#">가전 제품</a></li>
+                                    <li><a href="#">의류</a></li>
+                                    <li><a href="#">육아</a></li>
+									<li><a href="#">뷰티</a></li>
+									<li><a href="#">스포츠</a></li>
+									<li><a href="#">식품</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{url_for('board')}}">Board</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="{{url_for('static', filename = 'assets/js/jquery.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/skel.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/util.js')}}"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="{{url_for('static', filename = 'assets/js/main.js')}}"></script>
+
+        <!-- CORE PLUGINS -->
+        <script src="{{url_for('static', filename='vendor/jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{{url_for('static', filename='vendor/jquery.easing.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{{url_for('static', filename='js/layout.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/swiper.min.js')}}" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='js/components/masonry.min.js')}}" type="text/javascript"></script>
+    </body>
+</html>

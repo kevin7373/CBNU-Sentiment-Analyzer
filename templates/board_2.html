@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CSA Board</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="{{url_for('static', filename='vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="{{url_for('static', filename='css/animate.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- THEME STYLES -->
+        <link href="{{url_for('static', filename='css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
+        
+        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" /></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" /></script>
+        <script src="{{url_for('static', filename='js/jquery.svg3dtagcloud.min.js')}}" /></script>
+       
+	</head>
+	<body>
+		<header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="menu-container">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a class="logo-wrap" href="{{url_for('index')}}">
+                                <img class="logo-img logo-img-main" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                                <img class="logo-img logo-img-active" src="{{url_for('static', filename='img/logo2.png')}}" alt="Asentus Logo">
+                            </a>
+                        </div>
+                        <!-- End Logo -->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="navbar-nav navbar-nav-right">
+                              
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('index')}}">Home</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover" href="{{url_for('analysis')}}">Analysis</a></li>
+                                <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="{{url_for('board')}}">Board</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navbar Collapse -->
+                </div>
+            </nav>
+            <!-- Navbar -->
+        </header>
+        
+        <!-- Wrapper -->
+        <div id="wrapper">
+        	<!-- Main -->
+        	<div id="main">
+        		<div class="inner">
+        			<!-- Header -->
+        			<br><br><br>
+        			<header id="header">
+					<a href="{{url_for('index')}}" class="logo"><strong>CSA's</strong> Sentiment Analysis</a>
+        				<ul class="icons">
+        					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        					<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+        					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        					<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+        				</ul>
+        			</header>
+        			<!-- Content -->
+        			<section>
+						
+        				<header class="main">
+							<h2>분석 결과</h2>
+        				</header>
+                        
+        				<!-- Content -->
+                        <div class="grid-container">
+                            <div class="grid-item"><div class="piechart" id="board_piechart"></div></div>
+                            <div class="grid-item"><div class="barchart" id="board_barchart"></div></div>
+                        </div>
+                        <iframe src="{{url_for('table_board', index_1 = index_1, num = num)}}" width="1300" height="700" ></iframe>
+        				<h2 id="content">사용자 의견</h2>
+        				
+						<p>{{data['contents']}}</p>
+        				<hr style="border: solid 2.5px #f56a6a !important;">
+        				<ul class="actions">
+        					<li>
+        						<form method="POST" action="{{url_for('modify', num=num|int, recent_page=recent_page, search_contents = search_contents)}}">
+        							<button name="num" class="button" >수정</button>
+        						</form>
+        					</li>
+        					<li>
+        						<button id="myBtn" class="button">삭제</button>
+        						<div id="myModal" class="modal">
+        							<div class="modal-content">
+        								<span class="close">&times;</span>
+        								삭제하기 위해 비밀번호를 입력해주세요.
+        								<form method="POST" action="{{url_for('delete', num=num|int, recent_page=recent_page, search_contents=search_contents)}}">
+        									<input type="password" placeholder="PW" name="password" />
+        									<!-- <input type="submit"> -->
+        								</form>
+        							</div>
+        						</div>
+        					</li>
+        					<li>
+        						<form>
+        							<button type="button" onclick="window.location.href='{{url_for('board')}}'" class="button">목록</a>
+        						</form>
+        					</li>
+        				</ul>
+        			</section>
+        		</div>
+        	</div>
+            
+        	<!-- Sidebar -->
+        	<div id="sidebar">
+        		<div class="in">
+        			<!-- Search -->
+        			<section id="search" class="alt">
+        				<form method="POST" action="{{url_for('board')}}">
+        					<input type="text" name="search_contents" id="query" placeholder="Search" />
+        				</form>
+        			</section>
+        			<!-- Menu -->
+        			<nav id="menu">
+        				<header class="major">
+        					<h2>Menu</h2>
+        				</header>
+        				<ul>
+        					<li><a href="{{url_for('index')}}">Home</a></li>
+        					<li>
+        						<span class="opener">Analysis</span>
+        						<ul>
+        							<li><a href="{{url_for('analysis2')}}">가전 제품</a></li>
+        							<li><a href="{{url_for('analysis2')}}">의류</a></li>
+        							<li><a href="{{url_for('analysis2')}}">육아</a></li>
+									<li><a href="{{url_for('analysis2')}}">뷰티</a></li>
+									<li><a href="{{url_for('analysis2')}}">스포츠</a></li>
+									<li><a href="{{url_for('analysis2')}}">식품</a></li>
+        						</ul>
+        					</li>
+        					<li><a href="{{url_for('board')}}">Board</a></li>
+        				</ul>
+        			</nav>
+        		</div>
+        	</div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="{{url_for('static', filename = 'assets/js/jquery.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/skel.min.js')}}"></script>
+        <script src="{{url_for('static', filename = 'assets/js/util.js')}}"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="{{url_for('static', filename = 'assets/js/main.js')}}"></script>
+
+        <script type="text/javascript">
+        	google.charts.load("current", {packages:['corechart']});
+        	google.charts.setOnLoadCallback(draw_ColumnChart);
+
+        	function draw_ColumnChart() {
+        		var data1 = google.visualization.arrayToDataTable([
+        			["Element", "Density", { role: "style" } ],
+        			["Positive", {{data['jso']['pos_word']}}, "#3366cc"],
+        			["Negative", {{data['jso']['neg_word']}}, "#dc3912"],
+        			["Not-relative", {{data['jso']['not_word']}}, "#ff9900"]
+        			]);
+
+        		var view1 = new google.visualization.DataView(data1);
+        		view1.setColumns([0, 1,
+        			{ calc: "stringify",
+        			sourceColumn: 1,
+        			type: "string",
+        			role: "annotation" },
+        			2]);
+
+        		var options1 = {
+        			title: '워드분석',
+        			
+        			bar: {groupWidth: "50%"},
+        			legend: { position: "none" },
+                    width: 660,
+                    height: 385
+        		};
+
+        		var chart = new google.visualization.ColumnChart(document.getElementById("board_barchart"));
+        		chart.draw(view1, options1);
+        	}
+
+        	google.charts.load('current', {'packages':['corechart']});
+        	google.charts.setOnLoadCallback(draw_PieChart);
+
+        	function draw_PieChart() {
+        		var data = google.visualization.arrayToDataTable([
+        			['Sentiment', 'Sentiment per Sentence'],
+        			['긍정', {{data['jso']['pos_sen']}}],
+        			['부정', {{data['jso']['neg_sen']}}],
+        			['중립', {{data['jso']['not_sen']}}]
+        			]);
+
+        		var options = {
+        			title: '{{data['jso']['sen_count']}}' + '개의 문장분석',
+        			colors: ['#3366cc', '#dc3912', '#ff9900'],
+                    width: 660,
+                    height: 385
+        		};
+
+        		var chart = new google.visualization.PieChart(document.getElementById('board_piechart'));
+        		chart.draw(data, options);
+        	}
+        </script>
+
+        <script type="text/javascript">
+        	// Get the modal
+        	var modal = document.getElementById('myModal');
+
+        	// Get the button that opens the modal
+        	var btn = document.getElementById("myBtn");
+
+        	// Get the <span> element that closes the modal
+        	var span = document.getElementsByClassName("close")[0];
+
+        	// When the user clicks the button, open the modal 
+        	btn.onclick = function() {
+        		modal.style.display = "block";
+        	}
+
+        	// When the user clicks on <span> (x), close the modal
+        	span.onclick = function() {
+        		modal.style.display = "none";
+        	}
+
+        	// When the user clicks anywhere outside of the modal, close it
+        	window.onclick = function(event) {
+        		if (event.target == modal) {
+        			modal.style.display = "none";
+        		}
+        	}
+        </script>
+    </body>
+</html> 
